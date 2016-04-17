@@ -5,7 +5,6 @@ import java.io.Serializable;
 import org.springframework.hateoas.ResourceSupport;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Person extends ResourceSupport implements Serializable{
@@ -18,13 +17,6 @@ public class Person extends ResourceSupport implements Serializable{
     private String address;
     
     public Person() {}
-
-	public Person(@JsonProperty("id") Long idPerson, @JsonProperty("firstName") String firstName, @JsonProperty("lastName") String lastName, @JsonProperty("address") String address) {
-		this.idPerson = idPerson;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.address = address;
-	}
 
 	public Long getIdPerson() {
         return idPerson;
