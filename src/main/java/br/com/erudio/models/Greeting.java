@@ -1,17 +1,23 @@
 package br.com.erudio.models;
 
-public class Greeting {
+import org.springframework.hateoas.ResourceSupport;
 
-    private final long id;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+public class Greeting extends ResourceSupport {
+
+    private final long idGreeting;
     private final String content;
 
-    public Greeting(long id, String content) {
-        this.id = id;
+    @JsonCreator
+    public Greeting(@JsonProperty("id") long id, @JsonProperty("content") String content) {
+        this.idGreeting = id;
         this.content = content;
     }
 
-    public long getId() {
-        return id;
+    public long getIdGreeting() {
+        return idGreeting;
     }
 
     public String getContent() {

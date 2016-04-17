@@ -1,5 +1,9 @@
 package br.com.erudio.web.controllers;
 
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +22,6 @@ import com.wordnik.swagger.annotations.ApiOperation;
 import br.com.erudio.models.Person;
 import br.com.erudio.services.PersonService;
 
-
 @Api(value = "person")
 @RestController
 @RequestMapping("/person/")
@@ -31,14 +34,23 @@ public class PersonController {
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/{personId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public Person get(@PathVariable(value = "personId") String personId){
-        return personService.findById(personId);
+        Person person = personService.findById(personId);
+        person.add(linkTo(methodOn(PersonController.class).get(personId)).withSelfRel());
+		return person;
     }
 	
 	@ApiOperation(value = "Find all persons" )
 	@ResponseStatus(HttpStatus.OK)
 	@RequestMapping(value = "/findAll", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Person> findAll(){
-		return personService.findAll();
+		List<Person> persons = personService.findAll();
+		ArrayList<Person> personsReturn = new ArrayList<Person>();
+		for (Person person : persons) {
+			String idPerson = person.getIdPerson().toString();
+			person.add(linkTo(methodOn(PersonController.class).get(idPerson)).withSelfRel());
+			personsReturn.add(person);
+		}
+		return personsReturn;
 	}
 	
 	@ApiOperation(value = "Create a new person" )

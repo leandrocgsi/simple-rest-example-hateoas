@@ -22,7 +22,7 @@ public class PersonServiceImpl implements PersonService {
     @Override
     public Person findById(String personId) {
         Person person = new Person();
-        person.setId(counter.incrementAndGet());
+        person.setIdPerson(Long.getLong(personId));
         person.setFirstName("Leandro");
         person.setLastName("Costa");
         person.setAddress("Uberlândia - Minas Gerais - Brasil");
@@ -43,7 +43,7 @@ public class PersonServiceImpl implements PersonService {
     	long id = counter.incrementAndGet();
     	
         Person person = new Person();
-		person.setId(id);
+		person.setIdPerson(id);
         person.setFirstName("Person Name " + id);
         person.setLastName("Last Name " + id);
         person.setAddress("Some Address in Brasil " + id);

@@ -2,24 +2,36 @@ package br.com.erudio.models;
 
 import java.io.Serializable;
 
+import org.springframework.hateoas.ResourceSupport;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Person implements Serializable{
+public class Person extends ResourceSupport implements Serializable{
     
     private static final long serialVersionUID = 1L;
     
-    private Long id;
+    private Long idPerson;
     private String firstName;
     private String lastName;
     private String address;
     
-    public Long getId() {
-        return id;
+    public Person() {}
+
+	public Person(@JsonProperty("id") Long idPerson, @JsonProperty("firstName") String firstName, @JsonProperty("lastName") String lastName, @JsonProperty("address") String address) {
+		this.idPerson = idPerson;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.address = address;
+	}
+
+	public Long getIdPerson() {
+        return idPerson;
     }
     
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdPerson(Long id) {
+        this.idPerson = id;
     }
     
     public String getFirstName() {
