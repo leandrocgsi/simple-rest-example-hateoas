@@ -16,7 +16,9 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public Person create(Person person) {
-        return person;
+        Person createdPerson = person;
+        createdPerson.setIdPerson(counter.incrementAndGet());
+		return createdPerson;
     }
 
     @Override

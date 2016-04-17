@@ -55,16 +55,22 @@ public class PersonController {
 	
 	@ApiOperation(value = "Create a new person" )
 	@ResponseStatus(HttpStatus.OK)
-	@RequestMapping(method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public Person create(@RequestBody Person person){
-		return personService.create(person);
+		Person createdPerson = personService.create(person);
+		String idPerson = createdPerson.getIdPerson().toString();
+		createdPerson.add(linkTo(methodOn(PersonController.class).get(idPerson)).withSelfRel());
+		return createdPerson;
 	}
 	
 	@ApiOperation(value = "Update an existing person")
 	@ResponseStatus(HttpStatus.OK)
-	@RequestMapping(method = RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(method = RequestMethod.PUT,consumes = MediaType.APPLICATION_JSON_VALUE)
 	public Person update(@RequestBody Person person){
-		return personService.update(person);
+		Person updatedPerson = personService.update(person);
+		String idPerson = updatedPerson.getIdPerson().toString();
+		updatedPerson.add(linkTo(methodOn(PersonController.class).get(idPerson)).withSelfRel());		
+		return updatedPerson;
 	}
 
 	@ApiOperation(value = "Delete person by ID" )
