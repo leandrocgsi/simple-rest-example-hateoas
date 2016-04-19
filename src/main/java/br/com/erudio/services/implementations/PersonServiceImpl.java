@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import br.com.erudio.models.Person;
@@ -11,11 +13,14 @@ import br.com.erudio.services.PersonService;
 
 @Service
 public class PersonServiceImpl implements PersonService {
+	
+	private static final Logger logger = LoggerFactory.getLogger(PersonServiceImpl.class);
     
     private final AtomicLong counter = new AtomicLong();
 
     @Override
     public Person create(Person person) {
+    	logger.info("Creating a person");
         Person createdPerson = person;
         createdPerson.setIdPerson(counter.incrementAndGet());
 		return createdPerson;
@@ -23,6 +28,7 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public Person findById(String personId) {
+    	logger.info("Finding a person by ID");
         Person person = new Person();
         person.setIdPerson(Long.parseLong(personId));
         person.setFirstName("Leandro");
@@ -33,6 +39,7 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public List<Person> findAll() {
+    	logger.info("Finding all persons");
         ArrayList<Person> persons = new ArrayList<>();
         for (int i = 0; i < 8; i++) {
             Person person = mockPerson();
@@ -54,11 +61,12 @@ public class PersonServiceImpl implements PersonService {
     
     @Override
     public Person update(Person person) {
+    	logger.info("Updating a person");
     	return person;
     }
 
     @Override
     public void delete(String personId) {
-
+    	logger.info("Deleting a person");
     }
 }
