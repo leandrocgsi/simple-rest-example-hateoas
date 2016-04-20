@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import br.com.erudio.models.Person;
@@ -14,7 +13,7 @@ import br.com.erudio.services.PersonService;
 @Service
 public class PersonServiceImpl implements PersonService {
 	
-	private static final Logger logger = LoggerFactory.getLogger(PersonServiceImpl.class);
+	private static final Logger logger = Logger.getLogger(PersonServiceImpl.class);
     
     private final AtomicLong counter = new AtomicLong();
 
