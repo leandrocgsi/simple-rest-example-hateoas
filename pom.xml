@@ -44,8 +44,8 @@
             <scope>provided</scope>
         </dependency>
         
-           <!-- Adicione as dependencias de teste -->
-           <dependency>
+        <!-- Adicione as dependencias de teste -->
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
