@@ -35,7 +35,7 @@ public class PersonController {
     @RequestMapping(value = "/{personId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public Person get(@PathVariable(value = "personId") String personId){
         Person person = personService.findById(personId);
-        person.add(linkTo(methodOn(PersonController.class).get(personId)).withSelfRel());
+        addHATEOASSupport(person, personId);
 		return person;
     }
 	
@@ -47,7 +47,7 @@ public class PersonController {
 		ArrayList<Person> personsReturn = new ArrayList<Person>();
 		for (Person person : persons) {
 			String idPerson = person.getIdPerson().toString();
-			person.add(linkTo(methodOn(PersonController.class).get(idPerson)).withSelfRel());
+			addHATEOASSupport(person, idPerson);
 			personsReturn.add(person);
 		}
 		return personsReturn;
@@ -59,7 +59,7 @@ public class PersonController {
 	public Person create(@RequestBody Person person){
 		Person createdPerson = personService.create(person);
 		String idPerson = createdPerson.getIdPerson().toString();
-		createdPerson.add(linkTo(methodOn(PersonController.class).get(idPerson)).withSelfRel());
+		addHATEOASSupport(createdPerson, idPerson);
 		return createdPerson;
 	}
 	
@@ -69,7 +69,7 @@ public class PersonController {
 	public Person update(@RequestBody Person person){
 		Person updatedPerson = personService.update(person);
 		String idPerson = updatedPerson.getIdPerson().toString();
-		updatedPerson.add(linkTo(methodOn(PersonController.class).get(idPerson)).withSelfRel());		
+		addHATEOASSupport(updatedPerson, idPerson);		
 		return updatedPerson;
 	}
 
@@ -79,5 +79,8 @@ public class PersonController {
     public void delete(@PathVariable(value = "personId") String personId){
         personService.delete(personId);
     }
-	
+
+	private void addHATEOASSupport(Person person, String idPerson) {
+		person.add(linkTo(methodOn(PersonController.class).get(idPerson)).withSelfRel());
+	}
 }
