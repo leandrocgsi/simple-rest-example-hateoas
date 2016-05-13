@@ -3,6 +3,37 @@
 [![Build Status](https://travis-ci.org/leandrocgsi/simple-rest-example-hateoas.svg?branch=master)](https://travis-ci.org/leandrocgsi/simple-rest-example-hateoas)
 [![Build Status](https://circleci.com/gh/leandrocgsi/simple-rest-example-hateoas.svg?&style=shield)](https://circleci.com/gh/leandrocgsi/simple-rest-example-hateoas/)
 
+# HATEOAS
+
+```json
+[  
+    {  
+        "idPerson":1,
+        "firstName":"Person Name 1",
+        "lastName":"Last Name 1",
+        "address":"Some Address in Brasil 1",
+        "links":[  
+            {  
+                "rel":"self",
+                "href":"http://localhost:8081/erudio-restful-api/person/1"
+            }
+        ]
+    },
+    {  
+        "idPerson":2,
+        "firstName":"Person Name 2",
+        "lastName":"Last Name 2",
+        "address":"Some Address in Brasil 2",
+        "links":[  
+            {  
+                "rel":"self",
+                "href":"http://localhost:8081/erudio-restful-api/person/2"
+            }
+        ]
+    }
+]
+```
+
 # Swagger API documentation 
 
 By default you can see the documentation API in localhost adress "http://localhost:8080/sdoc.jsp" but as we changed the application context to "/erudio-restful-api" now we can access by follow URL:
