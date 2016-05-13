@@ -5,6 +5,10 @@
 
 # HATEOAS
 
+```bash
+	http://localhost:8081/erudio-restful-api/person/findAll
+```
+
 ```json
 [  
     {  
