@@ -3,6 +3,11 @@
 [![Build Status](https://travis-ci.org/leandrocgsi/simple-rest-example-hateoas.svg?branch=master)](https://travis-ci.org/leandrocgsi/simple-rest-example-hateoas)
 [![Build Status](https://circleci.com/gh/leandrocgsi/simple-rest-example-hateoas.svg?&style=shield)](https://circleci.com/gh/leandrocgsi/simple-rest-example-hateoas/)
 
+# Em português
+
+[Entendendo HATEOAS](http://www.semeru.com.br/blog/entendendo_hateoas/)
+[Aplicações RESTful HATEOAS com SpringBoot](http://www.semeru.com.br/blog/aplicacoes-restfull-hateoas-com-springboot/)
+
 # HATEOAS
 
 [HATEOAS (Hypermedia as the Engine of Application State)](https://spring.io/understanding/HATEOAS) is a constraint of the REST application architecture. A hypermedia-driven site provides information to navigate the site's REST interfaces dynamically by including hypermedia links with the responses. This capability differs from that of SOA-based systems and WSDL-driven interfaces. With SOA, servers and clients usually must access a fixed specification that might be staged somewhere else on the website, on another website, or perhaps distributed by email. According with [Richardson maturity model](http://martinfowler.com/articles/richardsonMaturityModel.html) [HATEOAS](https://spring.io/understanding/HATEOAS) is final level of REST. One API is really [RESTful](https://en.wikipedia.org/wiki/Representational_state_transfer) when implements this standart. Access following address and see the magic.
