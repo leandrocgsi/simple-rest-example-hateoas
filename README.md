@@ -3,6 +3,10 @@
 [![Build Status](https://travis-ci.org/leandrocgsi/simple-rest-example-hateoas.svg?branch=master)](https://travis-ci.org/leandrocgsi/simple-rest-example-hateoas)
 [![Build Status](https://circleci.com/gh/leandrocgsi/simple-rest-example-hateoas.svg?&style=shield)](https://circleci.com/gh/leandrocgsi/simple-rest-example-hateoas/)
 
+# HATEOAS Level 3 in [Richardson Maturity Model](http://martinfowler.com/articles/richardsonMaturityModel.html)
+
+When your app adopt HATEOAS() according with [Richardson Maturity Model](http://martinfowler.com/articles/richardsonMaturityModel.html) this the highest level, uses HATEOAS to deal with discovering the possibilities of your API towards the clients. 
+
 # Em português
 
 * [Entendendo HATEOAS](http://www.semeru.com.br/blog/entendendo_hateoas/)
